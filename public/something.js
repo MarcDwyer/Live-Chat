@@ -40,7 +40,7 @@ if (s !== statusDefault) {
 }
 });
 
-const socket = io.connect('http://localhost:3000');
+const socket = io.connect('/');
 
 if(socket) {
 socket.on('output', (data) => {
