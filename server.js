@@ -4,9 +4,9 @@ const MongoClient = require('mongodb').MongoClient;
 
 require('dotenv').config();
 const server = require('http').createServer(app)
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 3000
 const io = require('socket.io').listen(server).sockets;
-
+console.log(process.env.MONGODB);
 // app.use(bodyParser.json());
 const mongo = process.env.MONGODB;
 server.listen(port);
@@ -35,7 +35,7 @@ MongoClient.connect(mongo, (err, client) => {
         socket.on('input', (data) => {
             let name = data.name;
             let message = data.message;
-            console.log(name.length)
+           
             if (name.length == 0|| message.length == 0) {
                 sendStatus('Enter a name and message');
                 return;

@@ -40,7 +40,7 @@ if (s !== statusDefault) {
 }
 });
 
-const socket = io.connect('http://localhost:5000');
+const socket = io.connect('http://localhost:3000');
 
 if(socket) {
 socket.on('output', (data) => {
@@ -51,8 +51,10 @@ socket.on('output', (data) => {
             comment.innerHTML = `<strong>${item.name}:</strong> ${item.message}`;
             chat.classList.add('message');
             chat.appendChild(comment);
+            
        //     chat.insertBefore(comment, chat.firstChild);
         })
+        chat.scrollTo(0, 1000);
     }
 })
     socket.on('status', (data) => {
@@ -67,6 +69,7 @@ socket.on('output', (data) => {
                 name: username.value,
                 message: message.value
             });
+            chat.scrollTo({top: 1000, behavior: "smooth"});
             message.value = '';
             e.preventDefault();
     //    }
