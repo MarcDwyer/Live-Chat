@@ -66,11 +66,11 @@ socket.on('output', (data) => {
         }
     })
     socket.on('counter', (data) => {
-
+            console.log(data);
         const number = document.querySelector('.number');
-        number.textContent = data;
+        number.textContent = `${data} users online`;
     })
-    socket.on('disconnected', (data) => {
+    socket.on('', (data) => {
         console.log(data);
     })
     form.addEventListener('submit', (e) => {
