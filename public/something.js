@@ -56,7 +56,6 @@ socket.on('output', (data) => {
             chat.classList.add('message');
             chat.appendChild(comment);
             scrollBottom();
-       //     chat.insertBefore(comment, chat.firstChild);
         })
     }
 })
@@ -66,8 +65,16 @@ socket.on('output', (data) => {
             status.value = '';
         }
     })
+    socket.on('counter', (data) => {
+
+        const number = document.querySelector('.number');
+        number.textContent = data;
+    })
+    socket.on('disconnected', (data) => {
+        console.log(data);
+    })
     form.addEventListener('submit', (e) => {
-     //   if (e.keyCode === 13 && e.shiftKey == false) {
+
             socket.emit('input', {
                 name: username.value,
                 message: message.value

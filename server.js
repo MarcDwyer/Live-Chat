@@ -13,6 +13,8 @@ server.listen(port);
 app.use('/', express.static('./public'));
 // app.listen(port)
 
+let connected = 0;
+
 MongoClient.connect(mongo, (err, client) => {
     if (err) console.log(err);
     const db = client.db('abase');
@@ -20,6 +22,9 @@ MongoClient.connect(mongo, (err, client) => {
 
     io.on('connection', (socket) => {
         let chat = db.collection('chatter');
+        connected++;
+        socket.emit('counter', connected);
+
 
         sendStatus = function(s) {
             socket.emit('status', s)
@@ -58,6 +63,9 @@ MongoClient.connect(mongo, (err, client) => {
         socket.on('about', (data) => {
             socket.emit('news', {hello: world})
         })
+        socket.on('disconnect', (data) => {
+            connected--;
+            socket.emit(connected);
+        })
     })
-
 });
