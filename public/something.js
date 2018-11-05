@@ -44,7 +44,7 @@ if (s !== statusDefault) {
 }
 });
 
-const socket = io.connect(`${window.location.hostname}:3000`);
+const socket = io.connect(`${window.location.hostname}`);
 
 if(socket) {
 socket.on('output', (data) => {
