@@ -56,12 +56,12 @@ MongoClient.connect(mongo, (err, client) => {
                 })
             })
         });
-        socket.on('clear', (data) => {
+        socket.on('clear', () => {
             chat.remove({}, () => {
                 socket.emit('cleared');
             })
         });
-        socket.on('about', (data) => {
+        socket.on('about', () => {
             socket.emit('news', {hello: world})
         })
         socket.on('disconnect', (socket) => {
