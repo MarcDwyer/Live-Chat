@@ -1,13 +1,12 @@
 const express = require('express');
 const app = express();
-const MongoClient = require('mongodb').MongoClient;
-
 require('dotenv').config();
+const MongoClient = require('mongodb').MongoClient;
 const server = require('http').createServer(app)
 const port = process.env.PORT || 3000
 const io = require('socket.io').listen(server).sockets;
-console.log(process.env.MONGODB);
-// app.use(bodyParser.json());
+
+
 const mongo = process.env.MONGODB;
 server.listen(port);
 app.use('/', express.static('./public'));
@@ -61,7 +60,7 @@ MongoClient.connect(mongo, (err, client) => {
                 socket.emit('cleared');
             })
         });
-        socket.on('about', () => {
+        socket.on('about', (data) => {
             socket.emit('news', {hello: world})
         })
         socket.on('disconnect', (socket) => {
