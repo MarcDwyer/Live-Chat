@@ -43,7 +43,7 @@ MongoClient.connect(mongo, (err, client) => {
             let message = data.message;
            
             if (name.length == 0|| message.length == 0) {
-                sendStatus('Enter a name and message');
+                sendStatus('Please enter a name and message');
                 return;
             }
 
