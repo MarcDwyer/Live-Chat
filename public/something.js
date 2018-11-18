@@ -14,19 +14,19 @@ function getUser(e) {
 
     const {value} = e.target;
     let isMarc = '';
-    if (value === 'Marc') {
-        isMarc = 'the god himself blesses us with his presence';
+    if (value === 'Al Gore') {
+        isGore = 'the god himself blesses us with his presence';
     }
-    const welcomeText = `Welcome ${value} ${isMarc}`;
+    const welcomeText = `Welcome ${value} ${isGore}`;
     status.textContent = welcomeText;
     JSON.stringify(localStorage.setItem('user', value));
 }
 const name = localStorage.getItem('user');
 if (name) {
-    let isMarc = '';
-    if (name === 'Marc') isMarc = 'the god himself blesses us with his presence';
+    let isGore = '';
+    if (name === 'Al Gore') isMarc = 'the god himself blesses us with his presence';
     userForm.querySelector('input').value = name;
-    status.textContent = `Welcome ${name} ${isMarc}`;
+    status.textContent = `Welcome ${name} ${isGore}`;
     userForm.querySelector('label').textContent = 'Username already entered! You can still change it.'
 }
 
