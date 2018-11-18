@@ -13,7 +13,7 @@ userForm.querySelector('input').addEventListener('input', getUser);
 function getUser(e) {
 
     const {value} = e.target;
-    let isMarc = '';
+    let isGore = '';
     if (value === 'Al Gore') {
         isGore = 'the god himself blesses us with his presence';
     }
